@@ -1,7 +1,10 @@
-require_relative "books/version"
+require 'open-uri'
+require 'pry'
+require 'nokogiri'
 
-module Books
-  class Error < StandardError; end
-  # Your code goes here...
+require_relative "now_playing/version"
+require_relative "now_playing/cli"
+require_relative "now_playing/movie"
+
+module BestBooks
 end
-
