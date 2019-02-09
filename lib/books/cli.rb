@@ -2,6 +2,10 @@ class BestBooks::CLI
 
   def call
     puts 'Welcome to Best Books'
+    #scrape to create books
+    
+    BestBooks::Scraper.new.make_books
+    
     #display a list of books
     BestBooks::Book.all.each.with_index(1) do |book, i|
        puts "#{i}. #{book.title}"

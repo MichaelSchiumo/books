@@ -9,13 +9,13 @@ class BestBooks::Scraper
     Nokogiri::HTML(open("https://thegreatestbooks.org/"))
   end
 
-  def scrape_books_index(index_url)
-   
+  def scrape_books_index
+    get_page.css("li.item div.row div.col-xs-12") 
   end 
 
   def make_books 
     scrape_books_index.each do |b|
-      BestBooks::Books.new_from_index_page(b)
+      BestBooks::Book.new_from_index_page(b)
     end
   end
 end     
