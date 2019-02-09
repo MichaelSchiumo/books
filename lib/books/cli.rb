@@ -7,8 +7,8 @@ class BestBooks::CLI
     BestBooks::Scraper.new.make_books
     
     #display a list of books
-    BestBooks::Book.all.each.with_index(1) do |book, i|
-       puts "#{i}. #{book.title}"
+    BestBooks::Book.all.each do |book|
+       puts "#{book.rank}. #{book.title}"
     end
     
     #let the user give input
