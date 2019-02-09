@@ -6,7 +6,8 @@ require 'pry'
 class BestBooks::Scraper
 
   def get_page
-    Nokogiri::HTML(open(http://books.toscrape.com/index.html))
+    Nokogiri::HTML(open("https://thegreatestbooks.org/"))
+  end
 
   def scrape_books_index(index_url)
    

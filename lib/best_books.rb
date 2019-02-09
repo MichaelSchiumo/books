@@ -2,9 +2,12 @@ require 'open-uri'
 require 'pry'
 require 'nokogiri'
 
-require_relative "now_playing/version"
-require_relative "now_playing/cli"
-require_relative "now_playing/movie"
-
 module BestBooks
+  
 end
+
+require_relative "books/version"
+require_relative "books/book"
+require_relative "books/cli"
+require_relative "books/scraper"
+
