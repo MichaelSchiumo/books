@@ -3,7 +3,7 @@ class BestBooks::CLI
   def call
     puts 'Welcome to Best Books'
     #scrape to create books
-    binding.pry
+
     BestBooks::Scraper.new.make_books
 
     #display a list of books
@@ -13,6 +13,7 @@ class BestBooks::CLI
 
     #let the user give input
     puts "Enter which book you'd like to see:"
+    binding.pry
 
     input = gets.strip
 
@@ -24,8 +25,8 @@ class BestBooks::CLI
   end
 
   def print(book)
-    puts "#{book.title } by: #{book.author}"
-
+    puts "#{book.title} by: #{book.author}"
+    puts book.summary
   end
 
 end

@@ -10,12 +10,17 @@ class BestBooks::Scraper
   end
 
   def scrape_books_index
-    get_page.css("li.item div.row div.col-xs-12") 
-  end 
+    get_page.css("li.item div.row div.col-xs-12")
+  end
 
-  def make_books 
+  def make_books
     scrape_books_index.each do |b|
       BestBooks::Book.new_from_index_page(b)
     end
   end
-end     
+
+  def scrape_summary(url)
+    doc = Nokogiri::HTML(open(url))
+    doc.css('p').first.text.strip
+  end
+end
