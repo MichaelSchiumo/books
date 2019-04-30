@@ -15,7 +15,7 @@ class BestBooks::CLI
     puts "Enter which book you'd like to see:"
 
 
-    input = gets.strip
+    input = gets.strip.to_i
 
     if input == ''
       puts "Sorry, we didn't catch that. Please enter the number of the book that you'd like to see:"
@@ -23,10 +23,13 @@ class BestBooks::CLI
 
     #find book based on input and display that book's information
     while input != ''
-      input = gets.strip
+      input = gets.strip.to_i
       book = BestBooks::Book.find(input.to_i)
       print(book)
     end
+
+
+
 
     puts ""
     puts "Would you like to see another book? Enter Y or N:"
@@ -47,5 +50,9 @@ class BestBooks::CLI
       puts "#{book.title} by: #{book.author}"
       puts "#{book.summary}"
     end
+
+    def goodbye
+      puts "Thank you for visiting Best Books!"
+    end  
   end
 end
