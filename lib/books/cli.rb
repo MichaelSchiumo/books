@@ -11,10 +11,9 @@ class BestBooks::CLI
        puts "#{book.rank}. #{book.title}"
     end
 
+
     #let the user give input
     puts "Enter which book you'd like to see:"
-
-
     input = gets.strip.to_i
 
     if input == ''
@@ -28,31 +27,27 @@ class BestBooks::CLI
       print(book)
     end
 
-
-
-
     puts ""
     puts "Would you like to see another book? Enter Y or N:"
     input = gets.strip.downcase
     if input == 'y'
       call
-    else
+    elsif input == 'n'
       goodbye
+    else
+      puts "Sorry, we didn't catch that. Please enter Y or N:"  
     end
-
-
-
+  end
 
     #if input is bad, loop back and ask again
 
 
-    def print(book)
-      puts "#{book.title} by: #{book.author}"
-      puts "#{book.summary}"
-    end
+  def print(book)
+    puts "#{book.title} by: #{book.author}"
+    puts "#{book.summary}"
+  end
 
-    def goodbye
-      puts "Thank you for visiting Best Books!"
-    end  
+  def goodbye
+    puts "Thank you for visiting Best Books!"
   end
 end
