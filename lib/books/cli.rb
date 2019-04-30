@@ -13,11 +13,18 @@ class BestBooks::CLI
 
     #let the user give input
     puts "Enter which book you'd like to see:"
-    binding.pry
+
 
     input = gets.strip
 
+    if input == ''
+      puts "Sorry, we didn't catch that. Please enter the number of the book that you'd like to see:"
+    end
+
     #find book based on input and display that book's information
+    if input != ''
+      input = gets.strip
+      book = BestBooks::Book.find(input)
 
     #if input is bad, loop back and ask again
 
@@ -26,7 +33,7 @@ class BestBooks::CLI
 
   def print(book)
     puts "#{book.title} by: #{book.author}"
-    puts book.summary
+    puts "#{book.summary}
   end
 
 end

@@ -30,7 +30,7 @@ class BestBooks::Book
   end
 
   def summary
-    @summary ||= BestBooks::Scraper.new.scrape_summary(url) 
+    @summary ||= BestBooks::Scraper.new.scrape_summary(url)
   end
 
 end
