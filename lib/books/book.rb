@@ -18,6 +18,10 @@ class BestBooks::Book
     @@all
   end
 
+  def self.find_by_index(index)
+    @@all[index]
+  end
+
   def self.new_from_index_page(book_html)
 
     name_and_author = book_html.css('h4').text.split('. ')[1].strip

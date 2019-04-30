@@ -41,11 +41,11 @@ class BestBooks::CLI
 
     #if input is bad, loop back and ask again
 
-  def list_books
-    books = BestBooks::Book.all
-    books.each_with_index(1) {|book, index| puts "#{index}. #{book.title} - #{book.author} - #{book.rank}"}
-    puts ""
-  end  
+  # def list_books
+  #   books = BestBooks::Book.all
+  #   books.each_with_index(1) {|book, index| puts "#{index}. #{book.title} - #{book.author} - #{book.rank}"}
+  #   puts ""
+  # end
 
   def print(book)
     puts "#{book.title} by: #{book.author}"
