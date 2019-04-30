@@ -22,30 +22,30 @@ class BestBooks::CLI
     end
 
     #find book based on input and display that book's information
-    if input != ''
+    while input != ''
       input = gets.strip
-      book = BestBooks::Book.find(input)
+      book = BestBooks::Book.find(input.to_i)
       print(book)
+    end
 
-      puts ""
-      puts "Would you like to see another book? Enter 'Y' or 'N':"
-      input = gets.strip.downcase
-      if input = 'y'
-        call
-      else
-        goodbye
-      end
-    end    
+    puts ""
+    puts "Would you like to see another book? Enter Y or N:"
+    input = gets.strip.downcase
+    if input == 'y'
+      call
+    else
+      goodbye
+    end
+
+
 
 
     #if input is bad, loop back and ask again
 
-    #exit should be an option at any point
-  end
 
-  def print(book)
-    puts "#{book.title} by: #{book.author}"
-    puts "#{book.summary}
+    def print(book)
+      puts "#{book.title} by: #{book.author}"
+      puts "#{book.summary}"
+    end
   end
-
 end
