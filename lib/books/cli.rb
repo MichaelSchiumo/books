@@ -25,6 +25,18 @@ class BestBooks::CLI
     if input != ''
       input = gets.strip
       book = BestBooks::Book.find(input)
+      print(book)
+
+      puts ""
+      puts "Would you like to see another book? Enter 'Y' or 'N':"
+      input = gets.strip.downcase
+      if input = 'y'
+        call
+      else
+        goodbye
+      end
+    end    
+
 
     #if input is bad, loop back and ask again
 
