@@ -35,14 +35,19 @@ require 'pry'
     def menu
       input = nil
       while input != "exit"
-        puts "Enter which book you'd like to see:"
+        puts "Enter which book you'd like to see, or simply type 'list':"
         input = gets.strip
 
         if input.to_i > 0
           book = BestBooks::Book.find_by_index(input.to_i-1)
           puts "#{book.title} by: #{book.author}, ranked: #{book.rank}"
+          puts "If you'd like a summary, simply type 'summary':"
         elsif input == "list"
           list_books
+        elsif input == "summary"
+          puts "#{book.summary}"
+        elsif input == "exit"
+          goodbye  
         else
           puts "Sorry, we didn't catch that. Please select a book:"
         end
@@ -52,7 +57,7 @@ require 'pry'
     def goodbye
       puts "Thank you for visiting Best Books!"
     end
-end
+  end
 
 
 
