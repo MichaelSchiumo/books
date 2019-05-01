@@ -10,12 +10,16 @@ class BestBooks::Scraper
   end
 
   def scrape_books_index
-    get_page.css("li.item div.row div.col-xs-12")
+    #binding.pry
+    get_page.css("body div:nth-child(2) div div.col-sm-7 div.list-body ol li.item.pb-3.pt-3.border-bottom")
+
+    #get_page.css("li.item div.row div.col-xs-12")
   end
 
   def make_books
-    scrape_books_index.each do |b|
-      BestBooks::Book.new_from_index_page(b)
+    scrape_books_index.uniq.each do |b|
+      #binding.pry
+    BestBooks::Book.new_from_index_page(b)
     end
   end
 

@@ -1,58 +1,101 @@
-class BestBooks::CLI
+require 'pry'
 
-  def call
-    puts 'Welcome to Best Books'
-    #scrape to create books
+  class BestBooks::CLI
 
-    BestBooks::Scraper.new.make_books
-
-    #display a list of books
-    BestBooks::Book.all.each do |book|
-       puts "#{book.rank}. #{book.title}"
-    end
-
+  # def call
+  #   puts 'Welcome to Best Books'
+  #   #scrape to create books
+  #
+  #   BestBooks::Scraper.new.make_books
+  #
+  #   #display a list of books
+  #   # BestBooks::Book.all.each do |book|
+  #   #    puts "#{book.rank}. #{book.title}"
+  #   end
 
     #let the user give input
 
 
-    #find book based on input and display that book's information
-    input = nil
-    while input != "exit"
-      puts "Enter which book you'd like to see:"
-      input = gets.strip
+    def call
+      BestBooks::Scraper.new.make_books
+      list_books
+      menu
+      goodbye
+    end
 
-      if input.to_i > 0
-        book = BestBooks::Book.find_by_index(input.to_i-1)
-        puts "#{the_book.title} - #{the_book.author} - #{the_book.rank}"
+    def list_books
+      puts "Welcome to Best Books!"
+      #should these be instance variables
+      @books = BestBooks::Book.all
+      @books.each.with_index(1) do |book, i|
+        puts "#{i}.#{book.title} - #{book.author}"
       end
     end
 
-    puts ""
-    puts "Would you like to see another book? Enter Y or N:"
-    input = gets.strip.downcase
-    if input == 'y'
-      call
-    elsif input == 'n'
-      goodbye
-    else
-      puts "Sorry, we didn't catch that. Please enter Y or N:"
+    def menu
+      input = nil
+      while input != "exit"
+        puts "Enter which book you'd like to see:"
+        input = gets.strip
+
+        if input.to_i > 0
+          book = BestBooks::Book.find_by_index(input.to_i-1)
+          puts "#{book.title} by: #{book.author}, ranked: #{book.rank}"
+        elsif input == "list"
+          list_books
+        else
+          puts "Sorry, we didn't catch that. Please select a book:"
+        end
+      end
     end
-  end
 
-    #if input is bad, loop back and ask again
-
-  # def list_books
-  #   books = BestBooks::Book.all
-  #   books.each_with_index(1) {|book, index| puts "#{index}. #{book.title} - #{book.author} - #{book.rank}"}
-  #   puts ""
-  # end
-
-  def print(book)
-    puts "#{book.title} by: #{book.author}"
-    puts "#{book.summary}"
-  end
-
-  def goodbye
-    puts "Thank you for visiting Best Books!"
-  end
+    def goodbye
+      puts "Thank you for visiting Best Books!"
+    end
 end
+
+
+
+
+
+
+
+
+
+
+#     #find book based on input and display that book's information
+#     input = nil
+#     while input != "exit"
+#       puts "Enter which book you'd like to see:"
+#       input = gets.strip
+#
+#       if input.to_i > 0
+#         book = BestBooks::Book.find_by_index(input.to_i-1)
+#       end
+#     end
+#
+#     puts ""
+#     puts "Would you like to see another book? Enter Y or N:"
+#     input = gets.strip
+#     if input == 'y'
+#       list_books
+#     elsif input == 'n'
+#       goodbye
+#     else
+#       puts "Sorry, we didn't catch that. Please enter Y or N:"
+#     end
+#   end
+#
+#     #if input is bad, loop back and ask again
+#
+#
+#
+#   def print(book)
+#     puts "#{book.title} by: #{book.author}"
+#     puts "#{book.summary}"
+#   end
+#
+#   def goodbye
+#     puts "Thank you for visiting Best Books!"
+#   end
+# end
